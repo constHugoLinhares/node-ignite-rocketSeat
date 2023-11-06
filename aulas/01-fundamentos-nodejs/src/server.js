@@ -23,16 +23,41 @@ import http from 'node:http';
 // GET /users => Buscando usuários do back-end
 // POST /users => Criar um usuário no back-end
 
+// Stateful (os dados são perdidos ao servidor ser reiniciado) - Stateless (bancos de dados, formas de armazenamento externo)
+
+// JSON - JavaScript Object Notation
+
+// Cabeçalhos (Requisição/resposta) => Metadados
+
+/** HTTP Status Code
+ *  Informational responses (100 - 199)
+ *  Successful responses    (200 - 299)
+ *  Redirection responses   (300 - 399)
+ *  Client error responses  (400 - 499)
+ *  Server error responses  (500 - 599)
+ * */ 
+
+const users = []
+
 const server = http.createServer((req, res) => {
     const { method, url} = req
 
     if(method === 'GET' && url === '/users')
-        return res.end('Listagem de usuários'); // http POST localhost:3333/users
+        return res
+        .setHeader('Content-type', 'application/json')
+        .end(JSON.stringify(users)); // http POST localhost:3333/users
 
-    if(method === 'POST' && url === '/users')
-        return res.end('Criação de usuário'); // http GET localhost:3333/users
+    if(method === 'POST' && url === '/users'){
+        users.push({
+            id: 1,
+            nome: 'John Doe',
+            email: 'john@gmail.com'
+        })
 
-    return res.end('Hello World')
+        return res.writeHead(201).end(); // http GET localhost:3333/users
+    }
+
+    return res.writeHead(404).end('Not Found')
 })
 
 server.listen(3333);
