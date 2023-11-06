@@ -1,5 +1,8 @@
 import http from 'node:http';
 import { json } from './middlewares/json.js';
+import { Database } from './database.js';
+
+const database = new Database
 
 // CommonJS -> require
 // ESModules -> import/export <- node não suporta \ type:modules
@@ -48,6 +51,9 @@ const server = http.createServer(async (req, res) => {
     // console.log(body.name)
 
     if(method === 'GET' && url === '/users') {
+        const users = database.select('users')
+
+
         return res
         .setHeader('Content-type', 'application/json')
         .end(JSON.stringify(users)); // http POST localhost:3333/users
@@ -56,11 +62,13 @@ const server = http.createServer(async (req, res) => {
     if(method === 'POST' && url === '/users'){
         const  { name, email } = req.body
 
-        users.push({
+        const user ={
             id: 1,
             name,
             email
-        })
+        }
+
+        database.insert('users', user)
 
         return res.writeHead(201).end(); // http GET localhost:3333/users
     }
