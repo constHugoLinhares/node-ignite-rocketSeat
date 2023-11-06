@@ -1,3 +1,5 @@
+// *ENTENDENDO BUFFERS NO NODE*
+
 // Representação de um espaço na memória do computador; usado especificamente para transitar dados de maneira rápida.
 
 const buf = Buffer.from("ok");
