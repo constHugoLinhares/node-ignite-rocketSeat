@@ -32,5 +32,12 @@ export const routes = [
     
             return res.writeHead(201).end(); // http GET localhost:3333/users
         }
+    },
+    {
+        method: 'DELETE',
+        path: '/users',
+        handler: (req, res) => {
+            return res.end()
+        }
     }
 ]
