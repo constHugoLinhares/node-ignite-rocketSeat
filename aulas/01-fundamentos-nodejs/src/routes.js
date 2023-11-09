@@ -11,7 +11,6 @@ export const routes = [
         handler: (req, res) => {
             const users = database.select('users')
 
-
             return res
             .setHeader('Content-type', 'application/json')
             .end(JSON.stringify(users)); // http POST localhost:3333/users
