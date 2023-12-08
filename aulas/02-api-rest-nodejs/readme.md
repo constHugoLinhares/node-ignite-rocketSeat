@@ -13,5 +13,5 @@ npm run knex -- migrate:latest // Lê todas as migrations e as executa.
 # RN (Regras de negócio)
 
 - [X] A transação pode ser do tipo crédito que somará ao valor total, ou débito, que subtrairá;
-- [ ] Deve ser possível identificar o usuário entre as requisições;
-- [ ] O usuário só pode visualizar transações das quais ele criou;
+- [X] Deve ser possível identificar o usuário entre as requisições;
+- [X] O usuário só pode visualizar transações das quais ele criou;

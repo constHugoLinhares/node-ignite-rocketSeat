@@ -4,10 +4,18 @@ import { z } from "zod"
 import { randomUUID } from 'node:crypto'
 import { checkSessionIdExists } from "../middlewares/check-session-id-exists"
 
-// Cookies <-> Formas de manter contexto entre requisições
+// Unitários -> Unidade da sua aplicação
+// Integração -> Comunicação entre duas ou mais unidades
+// e2e (Ponta-a-ponta) -> Simula um usuário operando
+
+// front-end -> abrea a página de login, digite o texto hugo.linhares@rocketseat.com.br no campo com ID email, clique no botão...
+// back-end -> chamadas HTTP, WebSockets
+
+// Pirâmide de testes -> E2E (Não dependem de nenhuma tecnologia, não dependem de arquitetura)
+// 2000 testes -> E2E, 500ms cada, 16mins   X
 
 export async function transactionsRoutes(app: FastifyInstance) {
-    app.addHook('preHandler',async (request, reply) => {
+    app.addHook('preHandler', async (request, reply) => {
         console.log(`[${request.method}] ${request.url}`)
     })
 
