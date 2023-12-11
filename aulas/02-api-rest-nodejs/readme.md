@@ -1,17 +1,25 @@
-npm run knex -- migrate:make create-documents // Criar a migration
+# RF
 
-npm run knex -- migrate:latest // Lê todas as migrations e as executa.
+- [x] O usuário deve poder criar uma nova transação;
+- [x] O usuário deve poder obter um resumo da sua conta;
+- [x] O usuário deve poder listar todas transações que já ocorreram;
+- [x] O usuário deve poder visualizar uma transação única;
 
+# RN
 
-# RF (Requisitos Funcionais)
+- [x] A transação pode ser do tipo crédito que somará ao valor total, ou débito subtrairá;
+- [ ] Deve ser possível identificarmos o usuário entre as requisições;
+- [ ] O usuário só pode visualizar transações o qual ele criou;
 
-- [X] O Usuário deve poder criar uma nova transação;
-- [X] O usuário deve poder obter um resumo de sua conta;
-- [X] O Usuário deve poder listar todas as trasações que já ocorreram;
-- [X] O usuário deve poder visualizar uma transação única;
+<!--START_SECTION:footer-->
 
-# RN (Regras de negócio)
+<br />
+<br />
 
-- [X] A transação pode ser do tipo crédito que somará ao valor total, ou débito, que subtrairá;
-- [X] Deve ser possível identificar o usuário entre as requisições;
-- [X] O usuário só pode visualizar transações das quais ele criou;
+<p align="center">
+  <a href="https://discord.gg/rocketseat" target="_blank">
+    <img align="center" src="https://storage.googleapis.com/golden-wind/comunidade/rodape.svg" alt="banner"/>
+  </a>
+</p>
+
+<!--END_SECTION:footer-->
