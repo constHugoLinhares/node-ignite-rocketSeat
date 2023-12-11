@@ -12,6 +12,7 @@ export const config: Knex.Config = {
         user: 'ignite_nodejs_02_db_ifjn_user',
         password: 'KTsKOuHPlHFZcjJvke6OyBojQ8rrpJZa',
         database: env.DATABASE_URL,
+        port:5432,
     },
     useNullAsDefault: true,
     migrations: {
