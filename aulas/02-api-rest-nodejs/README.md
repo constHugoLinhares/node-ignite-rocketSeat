@@ -1,3 +1,5 @@
+npm run knex -- migrate:latest
+
 # RF
 
 - [x] O usuário deve poder criar uma nova transação;
@@ -8,18 +10,6 @@
 # RN
 
 - [x] A transação pode ser do tipo crédito que somará ao valor total, ou débito subtrairá;
-- [ ] Deve ser possível identificarmos o usuário entre as requisições;
-- [ ] O usuário só pode visualizar transações o qual ele criou;
+- [X] Deve ser possível identificarmos o usuário entre as requisições;
+- [X] O usuário só pode visualizar transações o qual ele criou;
 
-<!--START_SECTION:footer-->
-
-<br />
-<br />
-
-<p align="center">
-  <a href="https://discord.gg/rocketseat" target="_blank">
-    <img align="center" src="https://storage.googleapis.com/golden-wind/comunidade/rodape.svg" alt="banner"/>
-  </a>
-</p>
-
-<!--END_SECTION:footer-->
