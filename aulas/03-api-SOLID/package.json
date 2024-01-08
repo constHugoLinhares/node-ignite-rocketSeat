@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
+    "cp:env": "cp .env.example .env",
     "build": "tsup src --out-dir build",
     "start": "node build/server.js"
   },
@@ -18,6 +19,7 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "fastify": "^4.25.2"
+    "fastify": "^4.25.2",
+    "zod": "3.22.4"
   }
 }
