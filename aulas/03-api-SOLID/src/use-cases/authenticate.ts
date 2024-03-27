@@ -7,8 +7,13 @@ type AuthenticateUseCaseRequest = {
     password: string;
 }
 
-interface AuthenticateUseCaseResponse {
-
+type AuthenticateUseCaseResponse = {
+	user: {
+		id: string;
+		name: string;
+		email: string;
+		password_hash: string;
+	}
 }
 
 export class AuthenticateUseCase {
