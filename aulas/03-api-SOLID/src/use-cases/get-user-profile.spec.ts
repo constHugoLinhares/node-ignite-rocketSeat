@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import { InMemoryUsersRepository } from '@/repositories/in-memory-users-repository';
+import { InMemoryUsersRepository } from '@/repositories/in-memory/in-memory-users-repository';
 import { hash } from 'bcryptjs';
 import { GetUserProfileUseCase } from './get-user-profile';
 import { ResourceNotFoundError } from './errors/resource-not-found-error';
@@ -29,7 +29,7 @@ describe('Get User Profile Use Case', () => {
 	});
 
 	it('Should unable to authenticate with wrong email', async() => {
-		expect(() => 
+		await expect(() => 
 			sut.handle({
 				userId: 'non-existing-id',
 			}),
