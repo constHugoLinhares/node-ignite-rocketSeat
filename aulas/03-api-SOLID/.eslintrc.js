@@ -16,6 +16,8 @@ module.exports = {
 	},
 	'plugins': ['@typescript-eslint'],
 	'rules': {
+		'function-call-argument-newline': ['error', 'consistent'],
+		'function-paren-newline': ['error', { 'minItems': 4 }],
 		'indent': ['error','tab'],
 		'quotes': ['error','single'],
 		'semi': ['error','always'],
