@@ -20,8 +20,8 @@ describe('Check in Use Case', () => {
 			title: 'JavaScript Gym',
 			description: '',
 			phone: '',
-			latitude: new Decimal(0),
-			longitude: new Decimal(0),
+			latitude: new Decimal(-22.838094),
+			longitude: new Decimal(-47.924737),
 		});
 
 		vi.useFakeTimers();
@@ -35,8 +35,8 @@ describe('Check in Use Case', () => {
 		const { checkIn } = await sut.handle({
 			gymID: 'gym-01',
 			userID: 'user-01',
-			userLatitude: 0,
-			userLongitude: 0,
+			userLatitude: -22.838094,
+			userLongitude: -47.924737,
 		});
 
 		expect(checkIn.id).toEqual(expect.any(String));
@@ -48,16 +48,16 @@ describe('Check in Use Case', () => {
 		await sut.handle({
 			gymID: 'gym-01',
 			userID: 'user-01',
-			userLatitude: 0,
-			userLongitude: 0,
+			userLatitude: -22.838094,
+			userLongitude: -47.924737,
 		});
 
 		await expect(() => 
 			sut.handle({
 				gymID: 'gym-01',
 				userID: 'user-01',
-				userLatitude: 0,
-				userLongitude: 0,
+				userLatitude: -22.838094,
+				userLongitude: -47.924737,
 			})).rejects.toBeInstanceOf(Error);
 	});
 
@@ -69,8 +69,8 @@ describe('Check in Use Case', () => {
 		await sut.handle({
 			gymID: 'gym-01',
 			userID: 'user-01',
-			userLatitude: 0,
-			userLongitude: 0,
+			userLatitude: -22.838094,
+			userLongitude: -47.924737,
 		});
 
 		vi.setSystemTime(new Date(
@@ -80,10 +80,31 @@ describe('Check in Use Case', () => {
 		const { checkIn } = await sut.handle({
 			gymID: 'gym-01',
 			userID: 'user-01',
-			userLatitude: 0,
-			userLongitude: 0,
+			userLatitude: -22.838094,
+			userLongitude: -47.924737,
 		});
 
 		expect(checkIn.id).toEqual(expect.any(String));
+	});
+
+	it('Should not be able to check-in on distant gyms', async () => {
+		gymsRepository.items.push({
+			id: 'gym-02',
+			title: 'JavaScript Gym',
+			description: '',
+			phone: '',
+			latitude: new Decimal(-22.8328134),
+			longitude: new Decimal(-47.9288782),
+		});
+
+		await expect(
+			sut.handle({
+				gymID: 'gym-02',
+				userID: 'user-01',
+				userLatitude: -22.838094,
+				userLongitude: -47.924737,
+			}),
+		).rejects.toBeInstanceOf(Error);
+		
 	});
 });
