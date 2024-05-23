@@ -4,7 +4,7 @@ import { makeCheckInsUseCase } from '@/use-cases/factories/make-check-in-use-cas
 
 export async function create(request:FastifyRequest, reply: FastifyReply) {
 	const createCheckInParamsSchema = z.object({
-		gymID: z.string().uuid(),
+		gymId: z.string().uuid(),
 	});
 
 	const createCheckInBodySchema = z.object({
@@ -16,17 +16,17 @@ export async function create(request:FastifyRequest, reply: FastifyReply) {
 		}),
 	});
 
-	const { gymID } = createCheckInParamsSchema.parse(request.params);
+	const { gymId } = createCheckInParamsSchema.parse(request.params);
 	const { latitude, longitude } = createCheckInBodySchema.parse(request.body);
 
 	const createCheckInUseCase = makeCheckInsUseCase();
 
-	await createCheckInUseCase.handle({
-		gymID,
+	const response = await createCheckInUseCase.handle({
+		gymID: gymId,
 		userID: request.user.sub,
 		userLatitude: latitude,
 		userLongitude: longitude,
 	});
 	
-	return reply.status(201).send();
+	return reply.status(201).send(response);
 }
