@@ -19,6 +19,8 @@ jobs:
 
       - name: Install Dependencies
         run: npm ci
+        working-directory: ./aulas/03-api-SOLID
 
       - name: Run Unit Tests
         run: npm run test
+        working-directory: ./aulas/03-api-SOLID
